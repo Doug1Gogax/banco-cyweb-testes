@@ -37,10 +37,10 @@ describe('Login', () => {
     cy.get('#username').click().type('douglas.willian');
     cy.get('#senha').click().type('123456');
 
-    // ação que dispara as requisições
+    
     cy.get('#login-section > .btn').click();
 
-    // espera pelas requisições, com timeout maior para evitar timeouts curtos
+    
     cy.wait('@loginRequest', { timeout: 20000 });
     cy.wait('@contasRequest', { timeout: 20000 });
     cy.wait('@transferenciasRequest', { timeout: 20000 });
