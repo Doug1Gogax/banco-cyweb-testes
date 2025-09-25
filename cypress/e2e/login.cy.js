@@ -1,7 +1,7 @@
 describe('Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:4000');  })
-
+    cy.visit('http://localhost:4000');  
+  })
 
   it('Login com dados válidos deve permitir entrada no sistema', () => {
     
@@ -33,9 +33,7 @@ describe('Login', () => {
           { id: 2, valor: 350, descricao: 'Boleto Energia' }
         ]
       });
-    }).as('transferenciasRequest');
-
-    
+    }).as('transferenciasRequest');    
     
     cy.get('#username').click().type('douglas.willian');
     cy.get('#senha').click().type('123456');
@@ -53,11 +51,10 @@ describe('Login', () => {
     cy.get('#username').click().type('douglas.willian');
     cy.get('#senha').click().type('1467833');
     cy.contains('button', 'Entrar').click();
-
+    
     //cy.get('.toast').should('have,text', 'Erro no login.Tente novamente')
 
     
     
-});
-
+  });
 })
