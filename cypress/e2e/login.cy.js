@@ -1,6 +1,6 @@
 describe('Login', () => {
   beforeEach(() => {
-    cy.visit('URL');  
+    cy.visit('/');  
   })
 
   it('Login com dados válidos deve permitir entrada no sistema', () => {
@@ -37,7 +37,7 @@ describe('Login', () => {
 
     cy.fixture('credenciais').then((credenciais) => {
       cy.get('#username').click().type('credenciais.valido.usuario');
-      cy.get('#senha').click().type(' credenciais.valido.senha')
+      cy.get('#senha').click().type(' credenciais.valido.senha');
     });
     cy.contains('button', 'Entrar').click();
     
@@ -51,10 +51,9 @@ describe('Login', () => {
   it('Login com dados inválidos deve exibir mensagem de erro', () => {   
     
     cy.fixture('credenciais').then((credenciais) => {
-      cy.get('#username').click().type(credenciais.invalido.usuario );
+      cy.get('#username').click().type('credenciais.invalido.usuario');  
       cy.get('#senha').click().type('redenciais.invalido.senha' );
-    });
-    
+    });    
     cy.contains('button', 'Entrar').click();
     
     //cy.get('.toast').should('have,text', 'Erro no login.Tente novamente')
