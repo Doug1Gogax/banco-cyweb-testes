@@ -173,7 +173,8 @@
     "cypress": "^15.3.0"
   },
   "scripts": {
-    "test": "cypress run",
+    "test": "cypress run --env URL=http://localhost:4000",
+    "test": "cypress run --env URL=http://localhost:4000",
     "cy:headed": "cypress run --headed",
     "cy:open": "cypress open"
   },
