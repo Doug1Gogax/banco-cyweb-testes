@@ -33,10 +33,12 @@ describe('Login', () => {
           { id: 2, valor: 350, descricao: 'Boleto Energia' }
         ]
       });
-    }).as('transferenciasRequest');    
-    
-    cy.get('#username').click().type('douglas.willian');
-    cy.get('#senha').click().type('123456');
+    }).as('transferenciasRequest'); 
+
+    cy.fixture('credenciais').then((credenciais) => {
+      cy.get('#username').click().type('credenciais.valido.usuario');
+      cy.get('#senha').click().type(' credenciais.valido.senha')
+    });
     cy.contains('button', 'Entrar').click();
     
     cy.wait('@loginRequest', { timeout: 20000 });
@@ -48,8 +50,11 @@ describe('Login', () => {
 
   it('Login com dados inválidos deve exibir mensagem de erro', () => {   
     
-    cy.get('#username').click().type('douglas.willian');
-    cy.get('#senha').click().type('1467833');
+    cy.fixture('credenciais').then((credenciais) => {
+      cy.get('#username').click().type(credenciais.invalido.usuario );
+      cy.get('#senha').click().type('redenciais.invalido.senha' );
+    });
+    
     cy.contains('button', 'Entrar').click();
     
     //cy.get('.toast').should('have,text', 'Erro no login.Tente novamente')
